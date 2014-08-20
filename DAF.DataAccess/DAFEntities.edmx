@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DAFDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="DAFDBModelStoreContainer">
+          <EntitySet Name="ApplicationDemos" EntityType="DAFDBModel.Store.ApplicationDemos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ApplicationDocuments" EntityType="DAFDBModel.Store.ApplicationDocuments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Demos" EntityType="DAFDBModel.Store.Demos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Documents" EntityType="DAFDBModel.Store.Documents" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Features" EntityType="DAFDBModel.Store.Features" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SoftApplications" EntityType="DAFDBModel.Store.SoftApplications" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TextContents" EntityType="DAFDBModel.Store.TextContents" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ApplicationDemos_Demos" Association="DAFDBModel.Store.FK_ApplicationDemos_Demos">
+            <End Role="Demos" EntitySet="Demos" />
+            <End Role="ApplicationDemos" EntitySet="ApplicationDemos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationDemos_SoftApplications" Association="DAFDBModel.Store.FK_ApplicationDemos_SoftApplications">
+            <End Role="SoftApplications" EntitySet="SoftApplications" />
+            <End Role="ApplicationDemos" EntitySet="ApplicationDemos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationDocuments_Documents" Association="DAFDBModel.Store.FK_ApplicationDocuments_Documents">
+            <End Role="Documents" EntitySet="Documents" />
+            <End Role="ApplicationDocuments" EntitySet="ApplicationDocuments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationDocuments_SoftApplications" Association="DAFDBModel.Store.FK_ApplicationDocuments_SoftApplications">
+            <End Role="SoftApplications" EntitySet="SoftApplications" />
+            <End Role="ApplicationDocuments" EntitySet="ApplicationDocuments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Features_SoftApplications" Association="DAFDBModel.Store.FK_Features_SoftApplications">
+            <End Role="SoftApplications" EntitySet="SoftApplications" />
+            <End Role="Features" EntitySet="Features" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ApplicationDemos">
+          <Key>
+            <PropertyRef Name="ApplicationID" />
+            <PropertyRef Name="DemoID" />
+          </Key>
+          <Property Name="ApplicationID" Type="bigint" Nullable="false" />
+          <Property Name="DemoID" Type="bigint" Nullable="false" />
+          <Property Name="OrderIndex" Type="int" />
+        </EntityType>
+        <EntityType Name="ApplicationDocuments">
+          <Key>
+            <PropertyRef Name="ApplicationID" />
+            <PropertyRef Name="DocumentID" />
+          </Key>
+          <Property Name="ApplicationID" Type="bigint" Nullable="false" />
+          <Property Name="DocumentID" Type="bigint" Nullable="false" />
+          <Property Name="OrderIndex" Type="int" />
+        </EntityType>
+        <EntityType Name="Demos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="DemoPath" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Documents">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="DocumentPath" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Features">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ImageName" Type="nvarchar" MaxLength="250" />
+          <Property Name="ApplicationID" Type="bigint" />
+          <Property Name="OrderIndex" Type="int" />
+        </EntityType>
+        <EntityType Name="SoftApplications">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="ShortDescription" Type="nvarchar(max)" />
+          <Property Name="LongDescription" Type="ntext" />
+          <Property Name="ImagePath" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="TextContents">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="ntext" />
+          <Property Name="Title" Type="ntext" />
+          <Property Name="ControlName" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <Association Name="FK_ApplicationDemos_Demos">
+          <End Role="Demos" Type="DAFDBModel.Store.Demos" Multiplicity="1" />
+          <End Role="ApplicationDemos" Type="DAFDBModel.Store.ApplicationDemos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Demos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ApplicationDemos">
+              <PropertyRef Name="DemoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationDemos_SoftApplications">
+          <End Role="SoftApplications" Type="DAFDBModel.Store.SoftApplications" Multiplicity="1" />
+          <End Role="ApplicationDemos" Type="DAFDBModel.Store.ApplicationDemos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftApplications">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ApplicationDemos">
+              <PropertyRef Name="ApplicationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationDocuments_Documents">
+          <End Role="Documents" Type="DAFDBModel.Store.Documents" Multiplicity="1" />
+          <End Role="ApplicationDocuments" Type="DAFDBModel.Store.ApplicationDocuments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Documents">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ApplicationDocuments">
+              <PropertyRef Name="DocumentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationDocuments_SoftApplications">
+          <End Role="SoftApplications" Type="DAFDBModel.Store.SoftApplications" Multiplicity="1" />
+          <End Role="ApplicationDocuments" Type="DAFDBModel.Store.ApplicationDocuments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftApplications">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ApplicationDocuments">
+              <PropertyRef Name="ApplicationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Features_SoftApplications">
+          <End Role="SoftApplications" Type="DAFDBModel.Store.SoftApplications" Multiplicity="0..1" />
+          <End Role="Features" Type="DAFDBModel.Store.Features" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftApplications">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Features">
+              <PropertyRef Name="ApplicationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DAFDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="ApplicationDemos" EntityType="DAFDBModel.ApplicationDemo" />
+          <EntitySet Name="ApplicationDocuments" EntityType="DAFDBModel.ApplicationDocument" />
+          <EntitySet Name="Demos" EntityType="DAFDBModel.Demo" />
+          <EntitySet Name="Documents" EntityType="DAFDBModel.Document" />
+          <EntitySet Name="Features" EntityType="DAFDBModel.Feature" />
+          <EntitySet Name="SoftApplications" EntityType="DAFDBModel.SoftApplication" />
+          <EntitySet Name="TextContents" EntityType="DAFDBModel.TextContent" />
+          <AssociationSet Name="FK_ApplicationDemos_Demos" Association="DAFDBModel.FK_ApplicationDemos_Demos">
+            <End Role="Demos" EntitySet="Demos" />
+            <End Role="ApplicationDemos" EntitySet="ApplicationDemos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationDemos_SoftApplications" Association="DAFDBModel.FK_ApplicationDemos_SoftApplications">
+            <End Role="SoftApplications" EntitySet="SoftApplications" />
+            <End Role="ApplicationDemos" EntitySet="ApplicationDemos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationDocuments_Documents" Association="DAFDBModel.FK_ApplicationDocuments_Documents">
+            <End Role="Documents" EntitySet="Documents" />
+            <End Role="ApplicationDocuments" EntitySet="ApplicationDocuments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationDocuments_SoftApplications" Association="DAFDBModel.FK_ApplicationDocuments_SoftApplications">
+            <End Role="SoftApplications" EntitySet="SoftApplications" />
+            <End Role="ApplicationDocuments" EntitySet="ApplicationDocuments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Features_SoftApplications" Association="DAFDBModel.FK_Features_SoftApplications">
+            <End Role="SoftApplications" EntitySet="SoftApplications" />
+            <End Role="Features" EntitySet="Features" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ApplicationDemo">
+          <Key>
+            <PropertyRef Name="ApplicationID" />
+            <PropertyRef Name="DemoID" />
+          </Key>
+          <Property Name="ApplicationID" Type="Int64" Nullable="false" />
+          <Property Name="DemoID" Type="Int64" Nullable="false" />
+          <Property Name="OrderIndex" Type="Int32" />
+          <NavigationProperty Name="Demo" Relationship="DAFDBModel.FK_ApplicationDemos_Demos" FromRole="ApplicationDemos" ToRole="Demos" />
+          <NavigationProperty Name="SoftApplication" Relationship="DAFDBModel.FK_ApplicationDemos_SoftApplications" FromRole="ApplicationDemos" ToRole="SoftApplications" />
+        </EntityType>
+        <EntityType Name="ApplicationDocument">
+          <Key>
+            <PropertyRef Name="ApplicationID" />
+            <PropertyRef Name="DocumentID" />
+          </Key>
+          <Property Name="ApplicationID" Type="Int64" Nullable="false" />
+          <Property Name="DocumentID" Type="Int64" Nullable="false" />
+          <Property Name="OrderIndex" Type="Int32" />
+          <NavigationProperty Name="Document" Relationship="DAFDBModel.FK_ApplicationDocuments_Documents" FromRole="ApplicationDocuments" ToRole="Documents" />
+          <NavigationProperty Name="SoftApplication" Relationship="DAFDBModel.FK_ApplicationDocuments_SoftApplications" FromRole="ApplicationDocuments" ToRole="SoftApplications" />
+        </EntityType>
+        <EntityType Name="Demo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="DemoPath" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="ApplicationDemos" Relationship="DAFDBModel.FK_ApplicationDemos_Demos" FromRole="Demos" ToRole="ApplicationDemos" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="DocumentPath" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="ApplicationDocuments" Relationship="DAFDBModel.FK_ApplicationDocuments_Documents" FromRole="Documents" ToRole="ApplicationDocuments" />
+        </EntityType>
+        <EntityType Name="Feature">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ImageName" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="ApplicationID" Type="Int64" />
+          <Property Name="OrderIndex" Type="Int32" />
+          <NavigationProperty Name="SoftApplication" Relationship="DAFDBModel.FK_Features_SoftApplications" FromRole="Features" ToRole="SoftApplications" />
+        </EntityType>
+        <EntityType Name="SoftApplication">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="ShortDescription" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="LongDescription" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="ApplicationDemos" Relationship="DAFDBModel.FK_ApplicationDemos_SoftApplications" FromRole="SoftApplications" ToRole="ApplicationDemos" />
+          <NavigationProperty Name="ApplicationDocuments" Relationship="DAFDBModel.FK_ApplicationDocuments_SoftApplications" FromRole="SoftApplications" ToRole="ApplicationDocuments" />
+          <NavigationProperty Name="Features" Relationship="DAFDBModel.FK_Features_SoftApplications" FromRole="SoftApplications" ToRole="Features" />
+        </EntityType>
+        <EntityType Name="TextContent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Title" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ControlName" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_ApplicationDemos_Demos">
+          <End Role="Demos" Type="DAFDBModel.Demo" Multiplicity="1" />
+          <End Role="ApplicationDemos" Type="DAFDBModel.ApplicationDemo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Demos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ApplicationDemos">
+              <PropertyRef Name="DemoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationDemos_SoftApplications">
+          <End Role="SoftApplications" Type="DAFDBModel.SoftApplication" Multiplicity="1" />
+          <End Role="ApplicationDemos" Type="DAFDBModel.ApplicationDemo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftApplications">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ApplicationDemos">
+              <PropertyRef Name="ApplicationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationDocuments_Documents">
+          <End Role="Documents" Type="DAFDBModel.Document" Multiplicity="1" />
+          <End Role="ApplicationDocuments" Type="DAFDBModel.ApplicationDocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Documents">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ApplicationDocuments">
+              <PropertyRef Name="DocumentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationDocuments_SoftApplications">
+          <End Role="SoftApplications" Type="DAFDBModel.SoftApplication" Multiplicity="1" />
+          <End Role="ApplicationDocuments" Type="DAFDBModel.ApplicationDocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftApplications">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ApplicationDocuments">
+              <PropertyRef Name="ApplicationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Features_SoftApplications">
+          <End Role="SoftApplications" Type="DAFDBModel.SoftApplication" Multiplicity="0..1" />
+          <End Role="Features" Type="DAFDBModel.Feature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftApplications">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Features">
+              <PropertyRef Name="ApplicationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DAFDBModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="ApplicationDemos">
+            <EntityTypeMapping TypeName="DAFDBModel.ApplicationDemo">
+              <MappingFragment StoreEntitySet="ApplicationDemos">
+                <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+                <ScalarProperty Name="DemoID" ColumnName="DemoID" />
+                <ScalarProperty Name="OrderIndex" ColumnName="OrderIndex" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationDocuments">
+            <EntityTypeMapping TypeName="DAFDBModel.ApplicationDocument">
+              <MappingFragment StoreEntitySet="ApplicationDocuments">
+                <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+                <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+                <ScalarProperty Name="OrderIndex" ColumnName="OrderIndex" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Demos">
+            <EntityTypeMapping TypeName="DAFDBModel.Demo">
+              <MappingFragment StoreEntitySet="Demos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="DemoPath" ColumnName="DemoPath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="DAFDBModel.Document">
+              <MappingFragment StoreEntitySet="Documents">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="DocumentPath" ColumnName="DocumentPath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Features">
+            <EntityTypeMapping TypeName="DAFDBModel.Feature">
+              <MappingFragment StoreEntitySet="Features">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+                <ScalarProperty Name="OrderIndex" ColumnName="OrderIndex" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftApplications">
+            <EntityTypeMapping TypeName="DAFDBModel.SoftApplication">
+              <MappingFragment StoreEntitySet="SoftApplications">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TextContents">
+            <EntityTypeMapping TypeName="DAFDBModel.TextContent">
+              <MappingFragment StoreEntitySet="TextContents">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ControlName" ColumnName="ControlName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

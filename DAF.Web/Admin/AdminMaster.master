@@ -1,0 +1,31 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdminMaster.master.cs" Inherits="DAF.Web.Admin.AdminMaster" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <asp:ContentPlaceHolder runat="server" ID="cphHead" />
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+    <table>
+        <tr>
+            <td>
+                <asp:HyperLink runat="server" NavigateUrl="~/Admin/FeaturesManagement" Text="Features" />
+            </td>
+            <td>&nbsp;</td>
+            <td>
+                <asp:HyperLink runat="server" NavigateUrl="~/Admin/DocumentManagement" Text="Documents" />
+            </td>
+            <td>&nbsp;</td>
+            <td>
+                <asp:HyperLink runat="server" NavigateUrl="~/Admin/DemoManagement" Text="Demos" />
+            </td>
+            <td>&nbsp;</td>
+            <td>
+                <asp:HyperLink runat="server" NavigateUrl="~/Admin/ApplicationsManagement" Text="Applications" />
+            </td>
+            <td>&nbsp;</td>
+            <td>
+                <asp:LoginStatus runat="server" LogoutAction="RedirectToLoginPage" />
+            </td>
+        </tr>
+    </table>
+    <br />
+    <asp:ContentPlaceHolder runat="server" ID="cphMain" />
+</asp:Content>

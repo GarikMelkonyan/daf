@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAF.DataAccess", "DAF.DataAccess\DAF.DataAccess.csproj", "{098F0259-CC36-49C2-98E4-F67DAC47717F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAF.Business", "DAF.Business\DAF.Business.csproj", "{C175786F-3C7A-4460-A027-35DA94713D60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAF.Web", "DAF.Web\DAF.Web.csproj", "{E97CF62F-3A68-490E-9AD4-DC1288B6176D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{098F0259-CC36-49C2-98E4-F67DAC47717F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{098F0259-CC36-49C2-98E4-F67DAC47717F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{098F0259-CC36-49C2-98E4-F67DAC47717F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{098F0259-CC36-49C2-98E4-F67DAC47717F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C175786F-3C7A-4460-A027-35DA94713D60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C175786F-3C7A-4460-A027-35DA94713D60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C175786F-3C7A-4460-A027-35DA94713D60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C175786F-3C7A-4460-A027-35DA94713D60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E97CF62F-3A68-490E-9AD4-DC1288B6176D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E97CF62F-3A68-490E-9AD4-DC1288B6176D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E97CF62F-3A68-490E-9AD4-DC1288B6176D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E97CF62F-3A68-490E-9AD4-DC1288B6176D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
