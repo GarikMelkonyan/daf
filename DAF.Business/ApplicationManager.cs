@@ -36,6 +36,11 @@ namespace DAF.Business
                 SoftApplication application = db.SoftApplications.FirstOrDefault(s => s.ID == app.ID) ?? new SoftApplication();
                 application.ApplicationDemos.Clear();
                 application.ApplicationDocuments.Clear();
+
+                foreach (var feature in application.Features.ToList())
+                {
+                    db.Features.Remove(feature);
+                }
                 application.Features.Clear();
                 foreach (long demoID in app.DemoIDs)
                 {
