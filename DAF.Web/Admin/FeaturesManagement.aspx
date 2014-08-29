@@ -11,7 +11,7 @@
     <table style="width:100%">
         <tr>
             <td style="width:100%">
-                <asp:ListBox runat="server" ID="lstFeatures" DataTextField="Title" DataValueField="ID" Width="100%" />
+                <asp:ListBox runat="server" ID="lstFeatures" DataTextField="Title" DataValueField="ID" Width="100%" Height="500px" />
             </td>
             <td style="width:50px">
                 <asp:ImageButton ID="ibAdd" runat="server" ImageUrl="~/Images/Add.png" Width="25px" Height="25px" OnClick="ibAdd_Click" />

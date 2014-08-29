@@ -45,7 +45,7 @@ namespace DAF.Web.Admin
 									};
 				if (TextContentManager.UpdateTextContent(tc))
 				{
-					//UICacheManager.RefreshTextContent(tc.ControlName);
+					CacheManager.RefreshTextContent(tc.ControlName);
 					Response.Redirect(string.Format("~/{0}.aspx", tc.ControlName));
 				}
 				else

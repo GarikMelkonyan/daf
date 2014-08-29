@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/AdminMaster.master" AutoEventWireup="true" CodeBehind="FeatureDetail.aspx.cs" Inherits="DAF.Web.Admin.FeatureDetail" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="server">
     <script type="text/javascript">
 
         $('#<% = fuImage.ClientID %>').live('change', function () {

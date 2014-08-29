@@ -56,5 +56,9 @@ namespace DAF.Web.Helpers
             return Cache[Constants.CC_Features] as List<Feature>;
         }
 
+        public static void RefreshFeatures()
+        {
+            Cache.Remove(Constants.CC_Features);
+        }
     }
 }

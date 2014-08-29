@@ -79,6 +79,10 @@ namespace DAF.Business
                 {
                     db.ApplicationDemos.Remove(demo);
                 }
+                foreach (Feature feature in app.Features.ToList())
+                {
+                    db.Features.Remove(feature);
+                }
                 db.SoftApplications.Remove(app);
                 db.SaveChanges();
             }

@@ -68,6 +68,7 @@ namespace DAF.Web.Admin
                     fuImage.SaveAs(file);
                     FeaturesManager.UpdateFeatureImage(feature.ID, Path.GetFileName(file));
                 }
+                CacheManager.RefreshFeatures();
                 RedirectBack();
             }
         }

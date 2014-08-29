@@ -40,8 +40,6 @@ namespace DAF.Web.Admin
 
         protected void ibAdd_Click(object sender, ImageClickEventArgs e)
         {
-            if (lstFeatures.SelectedIndex == -1) return;
-
             RedirectToFeatureDetailPage();
         }
 
